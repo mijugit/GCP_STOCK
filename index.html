@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Data Viewer</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        select, input, button {
+            background-color: #2d2d2d;
+            color: #d4d4d4;
+            border: 1px solid #3d3d3d;
+            padding: 8px;
+            margin: 5px;
+        }
+        #fileList {
+            background-color: #2d2d2d;
+            padding: 10px;
+            margin: 10px 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .file-item {
+            cursor: pointer;
+            padding: 5px;
+        }
+        .file-item:hover {
+            background-color: #3d3d3d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <input type="text" id="ticker" placeholder="Stock Symbol (e.g., AAPL)">
+            <input type="date" id="startDate">
+            <input type="date" id="endDate">
+            <select id="interval">
+                <option value="1h">1 Hour</option>
+                <option value="4h">4 Hours</option>
+                <option value="1d">1 Day</option>
+            </select>
+            <button onclick="fetchNewData()">Fetch New Data</button>
+        </div>
+        <div id="fileList"></div>
+        <canvas id="chart"></canvas>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
